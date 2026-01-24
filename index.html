@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violeta Pía - Diseñadora Gráfica</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23c9a676'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='Playfair Display, serif' font-weight='700'>V</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Cursor personalizado -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-initial">V</span>
+                <span class="logo-text">ioleta Pía</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-background">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <span class="hero-tag">Diseñadora Gráfica</span>
+            <h1 class="hero-title">
+                <span class="title-line">Transformando</span>
+                <span class="title-line">Ideas en</span>
+                <span class="title-line title-accent">Arte Visual</span>
+            </h1>
+            <p class="hero-subtitle">Creando experiencias visuales memorables que conectan marcas con personas</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="cta-button primary">Ver mi trabajo</a>
+                <a href="#contacto" class="cta-button secondary">Contactar</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="scroll-text">Scroll</span>
+            <span class="scroll-line"></span>
+        </div>
+    </section>
+
+    <!-- Sobre Mí -->
+    <section id="sobre-mi" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <p>Tu foto aquí</p>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">Sobre Mí</h2>
+                    <p>Soy diseñadora gráfica con pasión por crear soluciones visuales que comunican, inspiran y conectan. Mi enfoque combina creatividad, estrategia y atención al detalle para dar vida a cada proyecto.</p>
+                    <p>Con experiencia en branding, diseño editorial, ilustración digital y diseño web, me especializo en transformar ideas en piezas visuales memorables.</p>
+                </div>
+            </div>
+            <div class="skills">
+                <h3>Habilidades</h3>
+                <div class="skills-grid">
+                    <span class="skill-tag">Branding</span>
+                    <span class="skill-tag">Diseño Editorial</span>
+                    <span class="skill-tag">Ilustración</span>
+                    <span class="skill-tag">UI/UX</span>
+                    <span class="skill-tag">Adobe Creative Suite</span>
+                    <span class="skill-tag">Tipografía</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Proyectos</span>
+                <h2 class="section-title">Mi Portfolio</h2>
+                <p class="section-description">Una selección de mis trabajos más destacados</p>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="editorial">Editorial</button>
+                <button class="filter-btn" data-filter="ilustracion">Ilustración</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+            </div>
+            <div class="portfolio-grid">
+                <!-- Proyecto 1 -->
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">Proyecto 1</div>
+                        <div class="portfolio-overlay">
+                            <span class="view-project">Ver proyecto</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-category">Branding</span>
+                        <h3>Identidad Corporativa Luxe</h3>
+                        <p>Desarrollo completo de marca para empresa de lujo</p>
+                    </div>
+                </div>
+                <!-- Proyecto 2 -->
+                <div class="portfolio-item" data-category="editorial">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">Proyecto 2</div>
+                        <div class="portfolio-overlay">
+                            <span class="view-project">Ver proyecto</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-category">Editorial</span>
+                        <h3>Revista Modern Living</h3>
+                        <p>Diseño editorial y diagramación de revista mensual</p>
+                    </div>
+                </div>
+                <!-- Proyecto 3 -->
+                <div class="portfolio-item" data-category="ilustracion">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">Proyecto 3</div>
+                        <div class="portfolio-overlay">
+                            <span class="view-project">Ver proyecto</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-category">Ilustración</span>
+                        <h3>Serie Botánica Digital</h3>
+                        <p>Colección de ilustraciones digitales naturalistas</p>
+                    </div>
+                </div>
+                <!-- Proyecto 4 -->
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">Proyecto 4</div>
+                        <div class="portfolio-overlay">
+                            <span class="view-project">Ver proyecto</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-category">Web Design</span>
+                        <h3>E-commerce Fashion</h3>
+                        <p>Diseño UX/UI para tienda online de moda</p>
+                    </div>
+                </div>
+                <!-- Proyecto 5 -->
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">Proyecto 5</div>
+                        <div class="portfolio-overlay">
+                            <span class="view-project">Ver proyecto</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-category">Branding</span>
+                        <h3>Startup Tech Brand</h3>
+                        <p>Identidad visual completa para startup tecnológica</p>
+                    </div>
+                </div>
+                <!-- Proyecto 6 -->
+                <div class="portfolio-item" data-category="editorial">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">Proyecto 6</div>
+                        <div class="portfolio-overlay">
+                            <span class="view-project">Ver proyecto</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-category">Editorial</span>
+                        <h3>Catálogo Premium</h3>
+                        <p>Catálogo de productos con fotografía y diseño</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Testimonios</span>
+                <h2 class="section-title">Lo que dicen mis clientes</h2>
+            </div>
+
+            <!-- Formulario para agregar testimonios -->
+            <div class="testimonial-form-container">
+                <h3>Deja tu comentario</h3>
+                <p class="form-subtitle">Tu opinión es muy importante para mí</p>
+                <form class="testimonial-form" id="testimonial-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="testimonial-name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="testimonial-position" placeholder="Tu cargo/empresa" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="star-rating">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" id="rating-value" value="5">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="testimonial-message" rows="4" placeholder="Comparte tu experiencia trabajando conmigo..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-testimonial-btn">Enviar Comentario</button>
+                </form>
+            </div>
+
+            <!-- Grid de testimonios -->
+            <div class="testimonials-grid" id="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Un trabajo excepcional. La identidad visual que creó para nuestra marca superó todas nuestras expectativas. Profesional, creativa y muy atenta a los detalles."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <h4>María Contreras</h4>
+                            <p>CEO, Luxe Brand</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Increíble capacidad para entender la visión del proyecto y transformarla en diseños impactantes. El proceso fue fluido y el resultado final fue perfecto."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JR</div>
+                        <div class="author-info">
+                            <h4>Juan Rodríguez</h4>
+                            <p>Director Creativo, Modern Living</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Su talento y profesionalismo son evidentes en cada proyecto. Las ilustraciones que creó para nuestra campaña fueron simplemente espectaculares."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SP</div>
+                        <div class="author-info">
+                            <h4>Sofía Pérez</h4>
+                            <p>Marketing Manager, Green Life</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para proyectos -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <div class="image-placeholder">Imagen del proyecto</div>
+                </div>
+                <div class="modal-info">
+                    <span class="modal-category">Categoría</span>
+                    <h2 class="modal-title">Nombre del Proyecto</h2>
+                    <p class="modal-description">Descripción detallada del proyecto, objetivos, proceso creativo y resultados obtenidos.</p>
+                    <div class="modal-details">
+                        <div class="detail-item">
+                            <strong>Cliente:</strong>
+                            <span>Nombre del cliente</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Año:</strong>
+                            <span>2024</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Servicios:</strong>
+                            <span>Branding, Diseño</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2 class="section-title">Trabajemos Juntos</h2>
+            <p class="contact-subtitle">¿Tienes un proyecto en mente? Me encantaría escucharlo</p>
+            <div class="contact-content">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="Mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Enviar Mensaje</button>
+                </form>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p>tu.email@ejemplo.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Redes Sociales</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link">Instagram</a>
+                            <a href="#" class="social-link">Behance</a>
+                            <a href="#" class="social-link">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Violeta Pía. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
