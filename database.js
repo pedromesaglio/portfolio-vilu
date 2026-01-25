@@ -1,14 +1,46 @@
 require('dotenv').config();
 
-// Detectar si estamos en producción (Vercel)
-const isProduction = process.env.VERCEL || process.env.DATABASE_URL;
+// Detectar si estamos en producción con base de datos configurada
+const hasDatabase = process.env.DATABASE_URL;
+const isProduction = process.env.VERCEL && hasDatabase;
 
 let db;
 let testimonials;
 let contactMessages;
 
+// Datos estáticos para cuando no hay base de datos
+const staticTestimonials = [
+    {
+        id: 1,
+        name: 'María Contreras',
+        position: 'CEO, Luxe Brand',
+        message: 'Un trabajo excepcional. La identidad visual que creó para nuestra marca superó todas nuestras expectativas. Profesional, creativa y muy atenta a los detalles.',
+        rating: 5,
+        created_at: new Date().toISOString(),
+        approved: true
+    },
+    {
+        id: 2,
+        name: 'Juan Rodríguez',
+        position: 'Director Creativo, Modern Living',
+        message: 'Increíble capacidad para entender la visión del proyecto y transformarla en diseños impactantes. El proceso fue fluido y el resultado final fue perfecto.',
+        rating: 5,
+        created_at: new Date().toISOString(),
+        approved: true
+    },
+    {
+        id: 3,
+        name: 'Sofía Pérez',
+        position: 'Marketing Manager, Green Life',
+        message: 'Su talento y profesionalismo son evidentes en cada proyecto. Las ilustraciones que creó para nuestra campaña fueron simplemente espectaculares.',
+        rating: 5,
+        created_at: new Date().toISOString(),
+        approved: true
+    }
+];
+
 if (isProduction) {
-    // ===== NEON POSTGRES (Producción) =====
+    // ===== NEON POSTGRES (Producción con DB) =====
     const { neon } = require('@neondatabase/serverless');
     const sql = neon(process.env.DATABASE_URL);
 
@@ -297,6 +329,48 @@ if (isProduction) {
 
         delete: (id, callback) => {
             db.run('DELETE FROM contact_messages WHERE id = ?', [id], callback);
+        }
+    };
+}
+
+// Si no hay base de datos configurada (Vercel sin DATABASE_URL)
+if (!isProduction && process.env.VERCEL) {
+    console.log('⚠️  Modo sin base de datos (Vercel) - Usando datos estáticos');
+
+    testimonials = {
+        getAll: (callback) => {
+            callback(null, staticTestimonials);
+        },
+        getById: (id, callback) => {
+            const testimonial = staticTestimonials.find(t => t.id === parseInt(id));
+            callback(null, testimonial);
+        },
+        create: (testimonial, callback) => {
+            callback(new Error('Base de datos no configurada'));
+        },
+        approve: (id, callback) => {
+            callback(null);
+        },
+        delete: (id, callback) => {
+            callback(new Error('Base de datos no configurada'));
+        }
+    };
+
+    contactMessages = {
+        getAll: (callback) => {
+            callback(null, []);
+        },
+        getById: (id, callback) => {
+            callback(null, null);
+        },
+        create: (message, callback) => {
+            callback(new Error('Base de datos no configurada'));
+        },
+        markAsRead: (id, callback) => {
+            callback(null);
+        },
+        delete: (id, callback) => {
+            callback(new Error('Base de datos no configurada'));
         }
     };
 }
