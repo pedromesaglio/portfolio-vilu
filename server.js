@@ -251,12 +251,12 @@ app.get('/api/health', (req, res) => {
 });
 
 // ============================================
-// MANEJO DE ERRORES 404
+// MANEJO DE ERRORES 404 (solo para rutas API)
 // ============================================
 
-app.use((req, res) => {
+app.use('/api/*', (req, res) => {
     res.status(404).json({
-        error: 'Ruta no encontrada',
+        error: 'Ruta API no encontrada',
         path: req.path
     });
 });
