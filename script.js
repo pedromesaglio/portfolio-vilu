@@ -509,7 +509,7 @@ stars.forEach(star => {
     });
 });
 
-document.querySelector('.star-rating').addEventListener('mouseleave', () => {
+document.querySelector('.star-rating')?.addEventListener('mouseleave', () => {
     const currentRating = ratingValue.value;
     stars.forEach(s => {
         if (s.getAttribute('data-rating') <= currentRating) {
