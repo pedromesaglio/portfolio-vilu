@@ -81,7 +81,7 @@ navLinks.forEach(link => {
 });
 
 // Smooth scroll para enlaces
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]:not(.modal-link-btn)').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
@@ -137,12 +137,45 @@ portfolioItems.forEach(item => {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
 
-        // Aquí puedes personalizar el contenido del modal según el proyecto
-        const title = item.querySelector('h3').textContent;
-        const category = item.querySelector('.portfolio-category').textContent;
+        const title = item.dataset.title || item.querySelector('h3').textContent;
+        const categoryLabel = item.dataset.categoryLabel || item.querySelector('.portfolio-category').textContent;
+        const description = item.dataset.description || 'Descripción detallada del proyecto.';
+        const client = item.dataset.client || '-';
+        const year = item.dataset.year || '2025';
+        const services = item.dataset.services || '-';
 
         modal.querySelector('.modal-title').textContent = title;
-        modal.querySelector('.modal-category').textContent = category;
+        modal.querySelector('.modal-category').textContent = categoryLabel;
+        modal.querySelector('.modal-description').textContent = description;
+
+        const modalClient = document.getElementById('modal-client');
+        const modalYear = document.getElementById('modal-year');
+        const modalServices = document.getElementById('modal-services');
+        if (modalClient) modalClient.textContent = client;
+        if (modalYear) modalYear.textContent = year;
+        if (modalServices) modalServices.textContent = services;
+
+        const imgEl = item.querySelector('img');
+        const modalImageContainer = modal.querySelector('.modal-image');
+        if (imgEl) {
+            modalImageContainer.innerHTML = `<img src="${imgEl.src}" alt="${title}">`;
+        } else {
+            modalImageContainer.innerHTML = '<div class="image-placeholder">Imagen del proyecto</div>';
+        }
+
+        const links = [
+            { id: 'modal-link-app', url: item.dataset.linkApp, label: item.dataset.linkAppLabel },
+            { id: 'modal-link-web', url: item.dataset.linkWeb, label: item.dataset.linkWebLabel },
+            { id: 'modal-link-book', url: item.dataset.linkBook, label: item.dataset.linkBookLabel }
+        ];
+
+        links.forEach(({ id, url, label }) => {
+            const btn = document.getElementById(id);
+            if (!btn) return;
+            btn.href = url || '#';
+            btn.style.display = url ? 'flex' : 'none';
+            if (url && label) btn.querySelector('span').textContent = label;
+        });
     });
 });
 
@@ -369,8 +402,8 @@ if (isMobile) {
     cursorFollower.style.display = 'none';
 }
 
-// Prevenir comportamientos por defecto en ciertos elementos
-document.querySelectorAll('a[href="#"]').forEach(link => {
+// Prevenir comportamientos por defecto en ciertos elementos (excluye botones del modal)
+document.querySelectorAll('a[href="#"]:not(.modal-link-btn)').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
     });
@@ -412,7 +445,7 @@ revealElements.forEach(el => {
 });
 
 // Smooth scroll mejorado
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]:not(.modal-link-btn)').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
 
