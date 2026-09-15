@@ -35,16 +35,14 @@ function animateCursor() {
 animateCursor();
 
 // Expandir cursor en hover de elementos interactivos
-const interactiveElements = document.querySelectorAll('a, button, .portfolio-item');
+const interactiveElements = document.querySelectorAll('a, button');
 interactiveElements.forEach(el => {
     el.addEventListener('mouseenter', () => {
-        cursor.style.transform += ' scale(1.5)';
-        cursorFollower.style.transform += ' scale(1.5)';
+        cursorFollower.classList.add('grow');
     });
 
     el.addEventListener('mouseleave', () => {
-        cursor.style.transform = cursor.style.transform.replace(' scale(1.5)', '');
-        cursorFollower.style.transform = cursorFollower.style.transform.replace(' scale(1.5)', '');
+        cursorFollower.classList.remove('grow');
     });
 });
 
@@ -55,28 +53,14 @@ const navLinks = document.querySelectorAll('.nav-link');
 
 hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
-
-    // Animación del hamburger
-    const spans = hamburger.querySelectorAll('span');
-    if (navMenu.classList.contains('active')) {
-        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-    } else {
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-    }
+    hamburger.classList.toggle('active');
 });
 
 // Cerrar menú al hacer click en un link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
-        const spans = hamburger.querySelectorAll('span');
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
+        hamburger.classList.remove('active');
     });
 });
 
@@ -95,54 +79,25 @@ document.querySelectorAll('a[href^="#"]:not(.modal-link-btn)').forEach(anchor =>
     });
 });
 
-// Filtro del portfolio
-const filterButtons = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Remover clase active de todos los botones
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Agregar clase active al botón clickeado
-        button.classList.add('active');
-
-        const filterValue = button.getAttribute('data-filter');
-
-        portfolioItems.forEach((item, index) => {
-            if (filterValue === 'all') {
-                item.classList.remove('hidden');
-                setTimeout(() => {
-                    item.style.animation = 'fadeInUp 0.6s ease forwards';
-                }, index * 100);
-            } else {
-                if (item.getAttribute('data-category') === filterValue) {
-                    item.classList.remove('hidden');
-                    setTimeout(() => {
-                        item.style.animation = 'fadeInUp 0.6s ease forwards';
-                    }, index * 100);
-                } else {
-                    item.classList.add('hidden');
-                }
-            }
-        });
-    });
-});
-
 // Modal de proyectos
 const modal = document.getElementById('project-modal');
 const modalClose = document.querySelector('.modal-close');
+const openProjectButtons = document.querySelectorAll('.open-project');
 
-portfolioItems.forEach(item => {
-    item.addEventListener('click', () => {
+openProjectButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const panel = button.closest('.project-panel');
+        if (!panel) return;
+
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
 
-        const title = item.dataset.title || item.querySelector('h3').textContent;
-        const categoryLabel = item.dataset.categoryLabel || item.querySelector('.portfolio-category').textContent;
-        const description = item.dataset.description || 'Descripción detallada del proyecto.';
-        const client = item.dataset.client || '-';
-        const year = item.dataset.year || '2025';
-        const services = item.dataset.services || '-';
+        const title = panel.dataset.title;
+        const categoryLabel = panel.dataset.categoryLabel;
+        const description = panel.dataset.description;
+        const client = panel.dataset.client || '-';
+        const year = panel.dataset.year || '2025';
+        const services = panel.dataset.services || '-';
 
         modal.querySelector('.modal-title').textContent = title;
         modal.querySelector('.modal-category').textContent = categoryLabel;
@@ -155,7 +110,7 @@ portfolioItems.forEach(item => {
         if (modalYear) modalYear.textContent = year;
         if (modalServices) modalServices.textContent = services;
 
-        const imgEl = item.querySelector('img');
+        const imgEl = panel.querySelector('.panel-image img');
         const modalImageContainer = modal.querySelector('.modal-image');
         if (imgEl) {
             modalImageContainer.innerHTML = `<img src="${imgEl.src}" alt="${title}">`;
@@ -164,9 +119,9 @@ portfolioItems.forEach(item => {
         }
 
         const links = [
-            { id: 'modal-link-app', url: item.dataset.linkApp, label: item.dataset.linkAppLabel },
-            { id: 'modal-link-web', url: item.dataset.linkWeb, label: item.dataset.linkWebLabel },
-            { id: 'modal-link-book', url: item.dataset.linkBook, label: item.dataset.linkBookLabel }
+            { id: 'modal-link-app', url: panel.dataset.linkApp, label: panel.dataset.linkAppLabel },
+            { id: 'modal-link-web', url: panel.dataset.linkWeb, label: panel.dataset.linkWebLabel },
+            { id: 'modal-link-book', url: panel.dataset.linkBook, label: panel.dataset.linkBookLabel }
         ];
 
         links.forEach(({ id, url, label }) => {
@@ -216,60 +171,39 @@ const fadeInObserver = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observar elementos que deben animarse
-const animatedElements = document.querySelectorAll('.service-card, .testimonial-card, .about-content, .section-header');
+const animatedElements = document.querySelectorAll('.section-header');
 animatedElements.forEach(el => {
     el.style.opacity = '0';
     fadeInObserver.observe(el);
 });
 
-// Animación escalonada para portfolio items
-const portfolioObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const items = entry.target.querySelectorAll('.portfolio-item');
-            items.forEach((item, index) => {
-                setTimeout(() => {
-                    item.style.animation = 'fadeInUp 0.6s ease forwards';
-                    item.style.opacity = '1';
-                }, index * 100);
-            });
-            portfolioObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.1 });
+// Navbar: transición de color según la sección visible
+const navbar = document.getElementById('navbar');
+const panelColors = {
+    paper: { bg: '#EFEEE6', text: '#1B1A17' },
+    sala: { bg: '#EFE2D1', text: '#3A0F18' },
+    mnba: { bg: '#2A9BD8', text: '#ffffff' }
+};
 
-const portfolioGrid = document.querySelector('.portfolio-grid');
-if (portfolioGrid) {
-    portfolioGrid.querySelectorAll('.portfolio-item').forEach(item => {
-        item.style.opacity = '0';
-    });
-    portfolioObserver.observe(portfolioGrid);
+function updateNavPanel(panelName) {
+    const colors = panelColors[panelName] || panelColors.paper;
+    navbar.style.backgroundColor = colors.bg;
+    navbar.style.color = colors.text;
+    navbar.style.borderBottomColor = panelName === 'mnba'
+        ? 'rgba(255,255,255,0.25)'
+        : 'rgba(27,26,23,0.14)';
 }
 
-// Navbar con efecto al scroll
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
+const panelSections = document.querySelectorAll('[data-panel]');
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            updateNavPanel(entry.target.dataset.panel);
+        }
+    });
+}, { threshold: [0.5] });
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll <= 0) {
-        navbar.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-    } else {
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.12)';
-        navbar.style.background = 'rgba(255, 255, 255, 1)';
-    }
-
-    // Ocultar navbar al hacer scroll hacia abajo (opcional)
-    // if (currentScroll > lastScroll && currentScroll > 500) {
-    //     navbar.style.transform = 'translateY(-100%)';
-    // } else {
-    //     navbar.style.transform = 'translateY(0)';
-    // }
-
-    lastScroll = currentScroll;
-});
+panelSections.forEach((section) => navObserver.observe(section));
 
 // Formulario de contacto
 const contactForm = document.querySelector('.contact-form');
@@ -348,35 +282,6 @@ if (contactForm) {
     });
 }
 
-// Efecto parallax sutil en el hero
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero-content');
-    const heroShapes = document.querySelectorAll('.hero-shape');
-
-    if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.4}px)`;
-        hero.style.opacity = 1 - (scrolled / 800);
-    }
-
-    // Parallax para las formas del hero
-    heroShapes.forEach((shape, index) => {
-        const speed = 0.2 + (index * 0.1);
-        shape.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
-
-// Agregar clase a los items del portfolio al hacer hover
-portfolioItems.forEach(item => {
-    item.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-12px) scale(1.02)';
-    });
-
-    item.addEventListener('mouseleave', function() {
-        this.style.transform = '';
-    });
-});
-
 // Contador para animación de números (si quieres agregar estadísticas)
 function animateCounter(element, target, duration = 2000) {
     let start = 0;
@@ -429,21 +334,6 @@ if ('IntersectionObserver' in window) {
     });
 }
 
-// Añadir clase 'scrolled' a elementos cuando están visibles
-const revealElements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card');
-
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-        }
-    });
-}, { threshold: 0.1 });
-
-revealElements.forEach(el => {
-    revealObserver.observe(el);
-});
-
 // Smooth scroll mejorado
 document.querySelectorAll('a[href^="#"]:not(.modal-link-btn)').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -477,180 +367,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.opacity = '1';
     }, 100);
 });
-
-// Sistema de calificación con estrellas para testimonios
-const stars = document.querySelectorAll('.star-rating .star');
-const ratingValue = document.getElementById('rating-value');
-
-stars.forEach(star => {
-    star.addEventListener('click', () => {
-        const rating = star.getAttribute('data-rating');
-        ratingValue.value = rating;
-
-        // Actualizar visualización de estrellas
-        stars.forEach(s => {
-            if (s.getAttribute('data-rating') <= rating) {
-                s.classList.add('active');
-            } else {
-                s.classList.remove('active');
-            }
-        });
-    });
-
-    star.addEventListener('mouseenter', () => {
-        const rating = star.getAttribute('data-rating');
-        stars.forEach(s => {
-            if (s.getAttribute('data-rating') <= rating) {
-                s.style.color = 'var(--accent-color)';
-            } else {
-                s.style.color = '#ddd';
-            }
-        });
-    });
-});
-
-document.querySelector('.star-rating')?.addEventListener('mouseleave', () => {
-    const currentRating = ratingValue.value;
-    stars.forEach(s => {
-        if (s.getAttribute('data-rating') <= currentRating) {
-            s.style.color = 'var(--accent-color)';
-        } else {
-            s.style.color = '#ddd';
-        }
-    });
-});
-
-// Inicializar todas las estrellas como activas (5 estrellas)
-stars.forEach(s => s.classList.add('active'));
-
-// Cargar testimonios desde el backend al iniciar
-async function loadTestimonials() {
-    try {
-        const response = await fetch('/api/testimonials');
-        const data = await response.json();
-
-        if (data.success && data.data.length > 0) {
-            // Limpiar grid (dejar solo los testimonios de ejemplo si existen)
-            testimonialsGrid.innerHTML = '';
-
-            // Agregar testimonios desde la base de datos
-            data.data.forEach(testimonial => {
-                addTestimonialToDOM(testimonial);
-            });
-        }
-    } catch (error) {
-        console.error('Error al cargar testimonios:', error);
-    }
-}
-
-// Función para agregar testimonio al DOM
-function addTestimonialToDOM(testimonial) {
-    const starsHTML = '★'.repeat(testimonial.rating);
-    const initials = testimonial.name.split(' ').map(word => word[0]).join('').toUpperCase().substring(0, 2);
-
-    const testimonialCard = document.createElement('div');
-    testimonialCard.className = 'testimonial-card';
-    testimonialCard.style.animation = 'fadeInUp 0.6s ease';
-    testimonialCard.innerHTML = `
-        <div class="testimonial-stars">${starsHTML}</div>
-        <p class="testimonial-text">"${testimonial.message}"</p>
-        <div class="testimonial-author">
-            <div class="author-avatar">${initials}</div>
-            <div class="author-info">
-                <h4>${testimonial.name}</h4>
-                <p>${testimonial.position}</p>
-            </div>
-        </div>
-    `;
-
-    testimonialsGrid.insertBefore(testimonialCard, testimonialsGrid.firstChild);
-}
-
-// Formulario de testimonios
-const testimonialForm = document.getElementById('testimonial-form');
-const testimonialsGrid = document.getElementById('testimonials-grid');
-
-if (testimonialForm) {
-    testimonialForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        // Obtener valores del formulario
-        const name = document.getElementById('testimonial-name').value;
-        const position = document.getElementById('testimonial-position').value;
-        const message = document.getElementById('testimonial-message').value;
-        const rating = ratingValue.value;
-
-        // Validación
-        if (!name || !position || !message) {
-            alert('Por favor completa todos los campos');
-            return;
-        }
-
-        const submitBtn = testimonialForm.querySelector('.submit-testimonial-btn');
-        const originalText = submitBtn.textContent;
-
-        try {
-            // Mostrar estado de carga
-            submitBtn.textContent = 'Enviando...';
-            submitBtn.disabled = true;
-
-            // Enviar al backend
-            const response = await fetch('/api/testimonials', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name,
-                    position,
-                    message,
-                    rating: parseInt(rating)
-                })
-            });
-
-            const data = await response.json();
-
-            if (data.success) {
-                // Agregar testimonio al DOM
-                addTestimonialToDOM(data.data);
-
-                // Limpiar formulario
-                testimonialForm.reset();
-
-                // Resetear estrellas a 5
-                ratingValue.value = 5;
-                stars.forEach(s => s.classList.add('active'));
-
-                // Mensaje de éxito
-                submitBtn.textContent = '¡Testimonio publicado!';
-                submitBtn.style.background = '#4caf50';
-
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.style.background = '';
-                    submitBtn.disabled = false;
-                }, 2000);
-
-                // Scroll al nuevo testimonio
-                setTimeout(() => {
-                    testimonialsGrid.firstChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 300);
-            } else {
-                throw new Error(data.error || 'Error al enviar testimonio');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Hubo un error al enviar tu testimonio. Por favor intenta de nuevo.');
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }
-    });
-}
-
-// Cargar testimonios al iniciar
-if (testimonialsGrid) {
-    loadTestimonials();
-}
 
 // Manejo de errores global
 window.addEventListener('error', (e) => {
