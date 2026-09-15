@@ -4,27 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Violeta Pía - Diseñadora Gráfica</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23c9a676'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='Playfair Display, serif' font-weight='700'>V</text></svg>">
+    <meta name="description" content="Portfolio de Violeta Pía, diseñadora gráfica especializada en branding, identidad visual y comunicación estratégica.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%236C2E8C'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='Georgia, serif' font-weight='700'>V</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Cursor personalizado -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
-    <!-- Navegación -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
-                <span class="logo-initial">V</span>
-                <span class="logo-text">ioleta Pía</span>
-            </a>
+            <a href="#inicio" class="nav-mark"><span class="nav-dot"></span>Violeta Pía</a>
             <ul class="nav-menu">
                 <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
+                <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
                 <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
             </ul>
@@ -36,131 +29,96 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="inicio" class="hero">
-        <div class="hero-background">
-            <div class="hero-shape shape-1"></div>
-            <div class="hero-shape shape-2"></div>
-            <div class="hero-shape shape-3"></div>
-        </div>
-        <div class="hero-content">
-            <span class="hero-tag">Diseñadora Gráfica</span>
-            <h1 class="hero-title">
-                <span class="title-line">Transformando</span>
-                <span class="title-line">Ideas en</span>
-                <span class="title-line title-accent">Experiencias Visuales</span>
-            </h1>
-            <p class="hero-subtitle">Creando experiencias visuales memorables que conectan marcas con personas</p>
-            <div class="hero-buttons">
-                <a href="#portfolio" class="cta-button primary">Ver mi trabajo</a>
-                <a href="#contacto" class="cta-button secondary">Contactar</a>
+        <span class="hero-ghost" aria-hidden="true">PÍA</span>
+        <div class="hero-inner">
+            <span class="eyebrow">Diseñadora gráfica · Buenos Aires</span>
+            <h1 class="hero-title">Identidades que <em>se sostienen</em> en el tiempo.</h1>
+            <p class="hero-subtitle">Branding, sistemas visuales y comunicación estratégica para marcas que necesitan verse tan bien como funcionan.</p>
+            <div class="hero-ctas">
+                <a href="#portfolio" class="btn primary">Ver portfolio</a>
+                <a href="https://wa.me/5491169807819" class="btn" target="_blank" rel="noopener">Hablemos</a>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <span class="scroll-text">Scroll</span>
-            <span class="scroll-line"></span>
         </div>
     </section>
 
-    <!-- Sobre Mí -->
     <section id="sobre-mi" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-image">
-                    <div class="image-placeholder">
-                        <p>Tu foto aquí</p>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <h2 class="section-title">Sobre Mí</h2>
-                    <p>Creo en el diseño como una herramienta para conectar personas, ideas y marcas. Mi enfoque combina creatividad y estrategia, desarrollando identidades visuales que no solo se ven bien, sino que comunican, generan valor y construyen experiencias memorables.</p>
-                    <p>Mi experiencia creando y gestionando proyectos propios me permitió comprender las marcas desde adentro: entender qué necesitan comunicar, a quién le hablan y cómo el diseño puede ayudarlas a crecer.</p>
-                </div>
-            </div>
-            <div class="skills">
-                <h3>Habilidades</h3>
-                <div class="skills-grid">
-                    <span class="skill-tag">Branding</span>
-                    <span class="skill-tag">Diseño Editorial</span>
-                    <span class="skill-tag">Ilustración</span>
-                    <span class="skill-tag">UI/UX</span>
-                    <span class="skill-tag">Adobe Creative Suite</span>
-                    <span class="skill-tag">Tipografía</span>
-                </div>
-            </div>
+        <div class="about-photo"><img src="images/violeta.png" alt="Retrato de Violeta Pía" width="150" height="150" loading="lazy"></div>
+        <div class="about-text">
+            <span class="eyebrow">Sobre mí</span>
+            <p class="about-lead">Creo en el diseño como herramienta para <span>conectar personas, ideas y marcas</span> — combinando creatividad y estrategia en cada sistema de identidad que construyo.</p>
+            <p class="about-body">Mi experiencia creando y gestionando proyectos propios me permitió comprender las marcas desde adentro: entender qué necesitan comunicar, a quién le hablan y cómo el diseño puede ayudarlas a crecer.</p>
+            <ul class="tools">
+                <li>Illustrator</li>
+                <li>Photoshop</li>
+                <li>InDesign</li>
+                <li>Figma</li>
+                <li>Canva</li>
+            </ul>
         </div>
     </section>
 
-    <!-- Portfolio Grid -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Proyectos</span>
-                <h2 class="section-title">Mi Portfolio</h2>
-                <p class="section-description">Una selección de mis trabajos más destacados</p>
-            </div>
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="branding">Branding</button>
-                <button class="filter-btn" data-filter="senaletica">Señalética</button>
-                <button class="filter-btn" data-filter="editorial">Editorial</button>
-                <button class="filter-btn" data-filter="ilustracion">Ilustración</button>
-                <button class="filter-btn" data-filter="web">Web</button>
-            </div>
-            <div class="portfolio-grid">
-                <!-- Proyecto Salamanca -->
-                <div class="portfolio-item" data-category="branding"
-                     data-title="Rebranding Centro Cultural Salamanca"
-                     data-category-label="Branding"
-                     data-description="Una propuesta que mantiene la tradición desde una mirada contemporánea para atraer a las nuevas generaciones."
-                     data-client="Centro Cultural Salamanca"
-                     data-year="2025"
-                     data-services="Branding, UI/UX, Diseño Web"
-                     data-link-app="https://www.figma.com/proto/DhtUyjIGfVBBisLJV6RXvc/Salamanca?node-id=1-4&p=f&viewport=313%2C209%2C0.13&t=JWBuZchWzuxsmY3m-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4&page-id=0%3A1"
-                     data-link-app-label="Ver Prototipo App"
-                     data-link-web="https://www.figma.com/proto/DhtUyjIGfVBBisLJV6RXvc/Salamanca?node-id=28-3206&p=f&viewport=240%2C88%2C0.12&t=cGY0jYMcHUl8AbLD-1&scaling=scale-down&content-scaling=fixed&page-id=24%3A3189"
-                     data-link-web-label="Ver Prototipo Web"
-                     data-link-book="https://online.fliphtml5.com/visitor/aeyp/#p=1"
-                     data-link-book-label="Ver Brandbook">
-                    <div class="portfolio-image">
-                        <img src="images/salamanca-cover.jpg" alt="Rebranding Centro Cultural Salamanca">
-                        <div class="portfolio-overlay">
-                            <span class="view-project">Ver proyecto</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <span class="portfolio-category">Branding</span>
-                        <h3>Rebranding Centro Cultural Salamanca</h3>
-                        <p>Identidad visual · App · Sitio web · Brandbook</p>
-                    </div>
-                </div>
-                <!-- Proyecto MNBA -->
-                <div class="portfolio-item" data-category="senaletica"
-                     data-title="Sistema de Señalización — Museo Nacional de Bellas Artes"
-                     data-category-label="Señalética"
-                     data-description="Guía el recorrido del visitante hacia el museo y mejora su experiencia mediante un diseño claro y accesible."
-                     data-client="Museo Nacional de Bellas Artes"
-                     data-year="2025"
-                     data-services="Señalética, Diseño Editorial, Identidad"
-                     data-link-app="https://online.fliphtml5.com/visitor/kxxq/#p=1"
-                     data-link-app-label="Ver Señalética Online">
-                    <div class="portfolio-image">
-                        <img src="images/mnba-cover.jpg" alt="Sistema de Señalización MNBA">
-                        <div class="portfolio-overlay">
-                            <span class="view-project">Ver proyecto</span>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <span class="portfolio-category">Señalética</span>
-                        <h3>Sistema de Señalización — MNBA</h3>
-                        <p>Señalética integral · Pictogramas · Editorial</p>
-                    </div>
-                </div>
-            </div>
+    <section id="portfolio" class="portfolio-intro">
+        <div class="section-header">
+            <span class="eyebrow">Proyectos</span>
+            <h2>Sistemas de identidad</h2>
         </div>
     </section>
 
-    <!-- Modal para proyectos -->
+    <section class="project-panel project-sala"
+        data-title="Rebranding Centro Cultural Salamanca"
+        data-category-label="Branding"
+        data-description="Una propuesta que mantiene la tradición desde una mirada contemporánea para atraer a las nuevas generaciones."
+        data-client="Centro Cultural Salamanca"
+        data-year="2025"
+        data-services="Branding, UI/UX, Diseño Web"
+        data-link-app="https://www.figma.com/proto/DhtUyjIGfVBBisLJV6RXvc/Salamanca?node-id=1-4&p=f&viewport=313%2C209%2C0.13&t=JWBuZchWzuxsmY3m-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4&page-id=0%3A1"
+        data-link-app-label="Ver Prototipo App"
+        data-link-web="https://www.figma.com/proto/DhtUyjIGfVBBisLJV6RXvc/Salamanca?node-id=28-3206&p=f&viewport=240%2C88%2C0.12&t=cGY0jYMcHUl8AbLD-1&scaling=scale-down&content-scaling=fixed&page-id=24%3A3189"
+        data-link-web-label="Ver Prototipo Web"
+        data-link-book="https://online.fliphtml5.com/visitor/aeyp/#p=1"
+        data-link-book-label="Ver Brandbook">
+        <div class="panel-grid">
+            <div class="panel-image"><img src="images/salamanca-cover.jpg" alt="Cover del rebranding de Centro Cultural Salamanca" loading="lazy"></div>
+            <div class="panel-text">
+                <span class="panel-tag">Branding · 2025</span>
+                <h3>Somos Salamanca</h3>
+                <p>Una propuesta que mantiene la tradición del centro cultural desde una mirada contemporánea, pensada para atraer a las nuevas generaciones.</p>
+                <button type="button" class="panel-link open-project">Ver el sistema completo →</button>
+            </div>
+        </div>
+        <svg class="panel-motif" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="20" r="14" fill="currentColor"/>
+            <path d="M60 34 C40 34 40 60 60 60 C80 60 80 34 60 34 Z" fill="currentColor" opacity="0.9"/>
+            <circle cx="30" cy="70" r="10" fill="currentColor"/>
+            <circle cx="90" cy="70" r="10" fill="currentColor"/>
+        </svg>
+    </section>
+
+    <section class="project-panel project-mnba"
+        data-title="Sistema de Señalización — Museo Nacional de Bellas Artes"
+        data-category-label="Señalética"
+        data-description="Guía el recorrido del visitante hacia el museo y mejora su experiencia mediante un diseño claro y accesible."
+        data-client="Museo Nacional de Bellas Artes"
+        data-year="2025"
+        data-services="Señalética, Diseño Editorial, Identidad"
+        data-link-app="https://online.fliphtml5.com/visitor/kxxq/#p=1"
+        data-link-app-label="Ver Señalética Online">
+        <div class="panel-grid reverse">
+            <div class="panel-text">
+                <span class="panel-tag">Señalética · 2025</span>
+                <h3>Museo Nacional de Bellas Artes</h3>
+                <p>Guía el recorrido del visitante hacia el museo y mejora su experiencia mediante un diseño claro y accesible.</p>
+                <button type="button" class="panel-link open-project">Ver el sistema completo →</button>
+            </div>
+            <div class="panel-image"><img src="images/mnba-cover.jpg" alt="Cover del sistema de señalización del Museo Nacional de Bellas Artes" loading="lazy"></div>
+        </div>
+        <svg class="panel-motif panel-motif-right" viewBox="0 0 120 120" aria-hidden="true">
+            <path d="M10 60 L70 60 M70 60 L50 40 M70 60 L50 80" stroke="currentColor" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="100" cy="60" r="8" fill="currentColor"/>
+        </svg>
+    </section>
+
     <div id="project-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
@@ -205,49 +163,43 @@
         </div>
     </div>
 
-    <!-- Contacto -->
     <section id="contacto" class="contact">
-        <div class="container">
-            <h2 class="section-title">Trabajemos Juntos</h2>
-            <p class="contact-subtitle">¿Tienes un proyecto en mente? Me encantaría escucharlo</p>
-            <div class="contact-content">
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Mensaje" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Enviar Mensaje</button>
-                </form>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h3>Email</h3>
-                        <p>tu.email@ejemplo.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <h3>WhatsApp</h3>
-                        <a href="https://wa.me/5491169807819" class="social-link" target="_blank" rel="noopener">+54 11 6980-7819</a>
-                    </div>
-                    <div class="contact-item">
-                        <h3>Redes Sociales</h3>
-                        <div class="social-links">
-                            <a href="#" class="social-link">Instagram</a>
-                            <a href="#" class="social-link">Behance</a>
-                            <a href="#" class="social-link">LinkedIn</a>
-                        </div>
-                    </div>
+        <div class="section-header">
+            <span class="eyebrow">Contacto</span>
+            <h2>Trabajemos juntos</h2>
+            <p class="contact-subtitle">¿Tenés un proyecto en mente? Me encantaría escucharlo.</p>
+        </div>
+        <div class="contact-content">
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Nombre" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="5" placeholder="Mensaje" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Enviar mensaje</button>
+            </form>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <a href="mailto:violetapia2203@gmail.com" class="social-link">violetapia2203@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/5491169807819" class="social-link" target="_blank" rel="noopener">+54 11 6980-7819</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Violeta Pía. Todos los derechos reservados.</p>
+        <div class="footer-inner">
+            <span class="nav-mark"><span class="nav-dot"></span>Violeta Pía</span>
+            <span>© 2026 · Tigre, Buenos Aires</span>
+        </div>
     </footer>
 
     <script src="script.js"></script>
