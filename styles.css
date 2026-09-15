@@ -5,11 +5,6 @@
     --ink-soft: #5A5750;
     --violet: #6C2E8C;
     --violet-tint: #EAE0F0;
-    --sala-red: #9E1B34;
-    --sala-cream: #EFE2D1;
-    --sala-ink: #3A0F18;
-    --mnba-blue: #2A9BD8;
-    --mnba-ink: #0B3A54;
     --border: rgba(27, 26, 23, 0.14);
     --radius-lg: 16px;
     --maxw: 1180px;
@@ -96,8 +91,12 @@ h1, h2, h3 { font-family: 'Bricolage Grotesque', sans-serif; text-wrap: balance;
     top: 0; left: 0; right: 0;
     z-index: 1000;
     background: var(--paper);
-    border-bottom: 0.5px solid var(--border);
-    transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+    border-bottom: 0.5px solid transparent;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.navbar.scrolled {
+    border-bottom-color: var(--border);
+    box-shadow: 0 1px 0 var(--border);
 }
 .nav-container {
     max-width: var(--maxw);
@@ -280,7 +279,8 @@ h1, h2, h3 { font-family: 'Bricolage Grotesque', sans-serif; text-wrap: balance;
     position: absolute;
     width: clamp(90px, 12vw, 140px);
     height: auto;
-    opacity: 0.5;
+    color: var(--ink);
+    opacity: 0.16;
     bottom: 24px; left: var(--gutter);
     z-index: 0;
 }
@@ -292,14 +292,12 @@ h1, h2, h3 { font-family: 'Bricolage Grotesque', sans-serif; text-wrap: balance;
     .panel-motif { display: none; }
 }
 
-/* Variante Salamanca */
-.project-sala { background: var(--sala-cream); color: var(--sala-ink); }
-.project-sala .panel-motif { color: var(--sala-red); }
-
-/* Variante MNBA */
-.project-mnba { background: var(--mnba-blue); color: #fff; }
-.project-mnba .panel-tag { border-color: #fff; }
-.project-mnba .panel-motif { color: #fff; opacity: 0.35; }
+/* Variantes de proyecto — fondo neutro; el color real de cada marca queda
+   solo en la foto del proyecto, no se repite como acento del sitio
+   (evita choques de color como violeta+rojo). El motivo gráfico es
+   monocromático (tinta), no usa el color de marca de cada cliente. */
+.project-sala { background: var(--paper-raised); }
+.project-mnba { background: var(--paper); }
 
 /* Modal */
 .modal {

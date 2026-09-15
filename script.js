@@ -177,33 +177,12 @@ animatedElements.forEach(el => {
     fadeInObserver.observe(el);
 });
 
-// Navbar: transición de color según la sección visible
+// Navbar: sombra sutil al scrollear (sin cambios de color)
 const navbar = document.getElementById('navbar');
-const panelColors = {
-    paper: { bg: '#EFEEE6', text: '#1B1A17' },
-    sala: { bg: '#EFE2D1', text: '#3A0F18' },
-    mnba: { bg: '#2A9BD8', text: '#ffffff' }
-};
 
-function updateNavPanel(panelName) {
-    const colors = panelColors[panelName] || panelColors.paper;
-    navbar.style.backgroundColor = colors.bg;
-    navbar.style.color = colors.text;
-    navbar.style.borderBottomColor = panelName === 'mnba'
-        ? 'rgba(255,255,255,0.25)'
-        : 'rgba(27,26,23,0.14)';
-}
-
-const panelSections = document.querySelectorAll('[data-panel]');
-const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-            updateNavPanel(entry.target.dataset.panel);
-        }
-    });
-}, { threshold: [0.5] });
-
-panelSections.forEach((section) => navObserver.observe(section));
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.pageYOffset > 8);
+});
 
 // Formulario de contacto
 const contactForm = document.querySelector('.contact-form');
