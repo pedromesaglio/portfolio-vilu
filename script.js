@@ -1,51 +1,3 @@
-// Cursor personalizado
-const cursor = document.querySelector('.cursor');
-const cursorFollower = document.querySelector('.cursor-follower');
-
-let mouseX = 0;
-let mouseY = 0;
-let cursorX = 0;
-let cursorY = 0;
-let followerX = 0;
-let followerY = 0;
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    cursor.style.opacity = '1';
-    cursorFollower.style.opacity = '1';
-});
-
-function animateCursor() {
-    // Cursor principal - movimiento rápido
-    cursorX += (mouseX - cursorX) * 0.3;
-    cursorY += (mouseY - cursorY) * 0.3;
-
-    // Cursor follower - movimiento más lento
-    followerX += (mouseX - followerX) * 0.15;
-    followerY += (mouseY - followerY) * 0.15;
-
-    cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-    cursorFollower.style.transform = `translate(${followerX}px, ${followerY}px)`;
-
-    requestAnimationFrame(animateCursor);
-}
-
-animateCursor();
-
-// Expandir cursor en hover de elementos interactivos
-const interactiveElements = document.querySelectorAll('a, button');
-interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursorFollower.classList.add('grow');
-    });
-
-    el.addEventListener('mouseleave', () => {
-        cursorFollower.classList.remove('grow');
-    });
-});
-
 // Navegación móvil
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -275,15 +227,6 @@ function animateCounter(element, target, duration = 2000) {
             element.textContent = Math.floor(start);
         }
     }, 16);
-}
-
-// Detección de dispositivo móvil para deshabilitar algunas animaciones
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-if (isMobile) {
-    // Deshabilitar cursor personalizado en móviles
-    cursor.style.display = 'none';
-    cursorFollower.style.display = 'none';
 }
 
 // Prevenir comportamientos por defecto en ciertos elementos (excluye botones del modal)
